@@ -39,7 +39,7 @@ class Form {
         $field['name']  = $name;
         $field['id']    = 'field-' . $name;
         $field['form']  = $this->form;
-        if(!$field['desc'])
+        if(!isset($field['desc']))
             $field['desc'] = '';
         
         if($is_post)
