@@ -39,6 +39,8 @@ class Form {
         $field['name']  = $name;
         $field['id']    = 'field-' . $name;
         $field['form']  = $this->form;
+        if(!$field['desc'])
+            $field['desc'] = '';
         
         if($is_post)
             $field['value'] = $_req->getPost($name);
