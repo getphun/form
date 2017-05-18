@@ -117,6 +117,8 @@ class Form {
         
         foreach($this->fields as $field => $args){
             $rules = $args['rules'];
+            $result->$field = $_req->getPost($field);
+            
             foreach($rules as $rule => $val){
                 if(!is_array($val))
                     $val = [$rule => $val];

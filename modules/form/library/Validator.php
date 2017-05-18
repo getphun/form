@@ -83,11 +83,11 @@ class Validator
         
         // self using URL match 
         if(isset($self['uri'])){
-            $uri = \Phun::$dispatcher->param->id ?? null;
+            $uri = \Phun::$dispatcher->param->{$self['uri']} ?? null;
             if(!$uri)
                 return false;
             
-            $ondb_uri = $model::get([$self['field'] = $uri], false);
+            $ondb_uri = $model::get([$self['field'] => $uri], false);
             if(!$ondb_uri)
                 return true;
             return $ondb_uri->id === $ondb->id;
