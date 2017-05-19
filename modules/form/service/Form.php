@@ -34,16 +34,13 @@ class Form {
         $is_post = $_req->method === 'POST';
         
         $field = $this->fields[$name];
-        $field['value'] = $this->object->$name ?? '';
+        $field['value'] = $_req->get($name) ?? $this->object->$name ?? '';
         $field['error'] = $this->getError($name);
         $field['name']  = $name;
         $field['id']    = 'field-' . $name;
         $field['form']  = $this->form;
         if(!isset($field['desc']))
             $field['desc'] = '';
-        
-        if($is_post)
-            $field['value'] = $_req->getPost($name);
         
         if($options)
             $field['options'] = $options;
@@ -117,13 +114,13 @@ class Form {
         
         foreach($this->fields as $field => $args){
             $rules = $args['rules'];
-            $result->$field = $_req->getPost($field);
+            $result->$field = $_req->get($field);
             
             foreach($rules as $rule => $val){
                 if(!is_array($val))
                     $val = [$rule => $val];
                 
-                $result->$field = $value = $_req->getPost($field);
+                $value = $result->$field;
                 
                 $vld        = $form_vld[$rule];
                 $vld_opts   = array_replace($vld['options'], $val);
