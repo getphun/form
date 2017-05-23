@@ -53,7 +53,7 @@ class Validator
         
         $length = strlen($value);
         
-        if(isset($opts['max']) && $length > $opts['max'])
+        if(isset($opts['max']) && $opts['max'] != '~' && $length > $opts['max'])
             return false;
         if(isset($opts['min']) && $length < $opts['min'])
             return false;
@@ -64,7 +64,7 @@ class Validator
         if(!is_numeric($value))
             return false;
         
-        if(isset($opts['max']) && $value > $opts['max'])
+        if(isset($opts['max']) && $opts['max'] != '~' && $value > $opts['max'])
             return false;
         if(isset($opts['min']) && $value < $opts['min'])
             return false;
