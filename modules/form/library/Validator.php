@@ -11,10 +11,16 @@ namespace Form\Library;
 class Validator
 {
     static function alnumdash($value){
+        if(!$value)
+            return true;
+        
         return !preg_match('![^a-zA-Z0-9-]!', $value);
     }
     
     static function callback($value, $opts){
+        if(!$value)
+            return true;
+        
         $cbs = explode('::', $opts['callback']);
         $cls = $cbs[0];
         $cla = $cbs[1];
@@ -22,6 +28,9 @@ class Validator
     }
     
     static function date($value, $opts){
+        if(!$value)
+            return true;
+        
         $time = strtotime($value);
         if(!$time)
             return false;
@@ -32,10 +41,16 @@ class Validator
     }
     
     static function email($value){
+        if(!$value)
+            return true;
+        
         return (bool)filter_var($value, FILTER_VALIDATE_EMAIL);
     }
     
     static function length($value, $opts){
+        if(!$value)
+            return true;
+        
         $length = strlen($value);
         
         if(isset($opts['max']) && $length > $opts['max'])
@@ -57,6 +72,9 @@ class Validator
     }
     
     static function regex($value, $opts){
+        if(!$value)
+            return true;
+        
         return (bool)filter_var($value, FILTER_VALIDATE_REGEXP, [
             'options' => [
                 'regexp' => $opts['regex']
@@ -69,6 +87,9 @@ class Validator
     }
     
     static function unique($value, $opts){
+        if(!$value)
+            return true;
+        
         $model = $opts['model'];
         $field = $opts['field'];
         
@@ -104,6 +125,9 @@ class Validator
     }
     
     static function url($value){
+        if(!$value)
+            return true;
+        
         return (bool)filter_var($value, FILTER_VALIDATE_URL);
     }
 }
