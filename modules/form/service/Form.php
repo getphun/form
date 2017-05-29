@@ -96,7 +96,7 @@ class Form {
         $this->object = (object)$object;
     }
     
-    public function validate($form=null, $object=null){
+    public function validate($form=null, $object=null, $method='POST'){
         if($form)
             $this->setForm($form);
         if($object)
@@ -105,7 +105,7 @@ class Form {
         $_dis = &\Phun::$dispatcher;
         $_req = &$_dis->req;
         
-        if($_req->method !== 'POST')
+        if($_req->method !== $method)
             return false;
         
         $result = new \stdClass();
