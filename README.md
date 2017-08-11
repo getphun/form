@@ -29,6 +29,9 @@ return [
                         'max'       => 25
                     ],
                     'alnum-dash'=> true
+                ],
+                'filter'    => [
+                    'lowercase' => true
                 ]
             ],
             'password' => [
@@ -47,6 +50,9 @@ return [
                 ],
                 'rules'     => [
                     'required'  => true
+                ],
+                'filter'    => [
+                    'number'    => true
                 ]
             ]
         ]
@@ -58,8 +64,8 @@ Text `user-login` adalah nama form yang akan digunakan di kontroler, sementara a
 key di bawahnya adalah nama field dengan konfigurasinya.
 
 Properti field yang dikenal sejauh ini adalah `type`, `label`, `nolabel`, `desc`,
-`rules`, `options`, sementara jika ada konfigurasi tambahan, akan diteruskan ke
-view pada saat render field html.
+`rules`, `options`, dan `filter`. Sementara jika ada konfigurasi tambahan, akan
+diteruskan ke view pada saat render field html.
 
 Penggunaan pada kontroler kurang lebih seperti di bawah:
 

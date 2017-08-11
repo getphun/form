@@ -61,6 +61,8 @@ class Validator
     }
     
     static function numeric($value, $opts){
+        if(!$value)
+            return true;
         if(!is_numeric($value))
             return false;
         

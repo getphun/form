@@ -110,26 +110,42 @@ class Form {
         
         $result = new \stdClass();
         
-        $form_vld = \Phun::$config['form_validation'];
+        $form_vld = \Phun::$config['form_validation']['validator'];
+        $form_flt = \Phun::$config['form_validation']['filter'];
         
         foreach($this->fields as $field => $args){
-            $rules = $args['rules'];
+            $rules          = $args['rules']   ?? [];
+            $filters        = $args['filters'] ?? [];
             $result->$field = $_req->get($field);
             
+            // start applying filters
+            foreach($filters as $filter => $val){
+                if(!is_array($val))
+                    $val = [$filter => $val];
+                
+                $flt        = $form_flt[$filter];
+                $flt_opts   = array_replace($flt['options'], $val);
+                
+                $flt_handler= $flt['handler'];
+                $flth_class = $flt_handler['class'];
+                $flth_action= $flt_handler['action'];
+
+                $result->$field = $flth_class::$flth_action($result->$field, $flt_opts);
+            }
+            
+            // start validating each rules
             foreach($rules as $rule => $val){
                 if(!is_array($val))
                     $val = [$rule => $val];
                 
-                $value = $result->$field;
-                
                 $vld        = $form_vld[$rule];
                 $vld_opts   = array_replace($vld['options'], $val);
                 
-                $vld_hanlder= $vld['handler'];
-                $vldh_class = $vld_hanlder['class'];
-                $vldh_action= $vld_hanlder['action'];
+                $vld_handler= $vld['handler'];
+                $vldh_class = $vld_handler['class'];
+                $vldh_action= $vld_handler['action'];
                 
-                if($vldh_class::$vldh_action($value, $vld_opts) === true)
+                if($vldh_class::$vldh_action($result->$field, $vld_opts) === true)
                     continue;
                 
                 $vld_msg = $vld['message'];

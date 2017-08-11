@@ -27,106 +27,139 @@ return [
     '_autoload' => [
         'classes' => [
             'Form\\Service\\Form'       => 'modules/form/service/Form.php',
-            'Form\\Library\\Validator'  => 'modules/form/library/Validator.php'
+            'Form\\Library\\Validator'  => 'modules/form/library/Validator.php',
+            'Form\\Library\\Filter'     => 'modules/form/library/Filter.php'
         ],
         'files' => []
     ],
     
     'form_validation' => [
-    
-        'alnumdash' => [
-            'message' => 'Field :field is accept only alphanumeric and dash character',
-            'options' => [],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'alnumdash'
-            ]
-        ],
-        
-        'callback' => [
-            'message' => 'Field :field is not acceptable',
-            'options' => [],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'callback'
-            ]
-        ],
-        
-        'date' => [
-            'message' => 'Field :field is not valid date',
-            'options' => [],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'date'
-            ]
-        ],
-        
-        'email' => [
-            'message' => 'Field :field is not valid email address',
-            'options' => [],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'email'
-            ]
-        ],
-        
-        'length' => [
-            'message' => 'Field :field length should be in acceptable range',
-            'options' => [
-                'min'   => '~',
-                'max'   => '~'
+        'filter' => [
+            'lowercase' => [
+                'options'   => [],
+                'handler'   => [
+                    'class'     => 'Form\\Library\\Filter',
+                    'action'    => 'lowercase'
+                ]
             ],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'length'
-            ]
-        ],
-        
-        'numeric' => [
-            'message' => 'Field :field must be numeric ( in acceptable range )',
-            'options' => [],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'numeric'
-            ]
-        ],
-        
-        'regex' => [
-            'message' => 'Field :field is not match pattern',
-            'options' => [],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'regex'
-            ]
-        ],
-        
-        'required' => [
-            'message' => 'Field :field is required',
-            'options' => [],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'required'
-            ]
-        ],
-        
-        'unique' => [
-            'message' => 'Field :field already used',
-            'options' => [
-                'model'     => '',
-                'field'     => ''
+            'uppercase' => [
+                'options'   => [],
+                'handler'   => [
+                    'class'     => 'Form\\Library\\Filter',
+                    'action'    => 'uppercase'
+                ]
             ],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'unique'
+            'string' => [
+                'options'   => [],
+                'handler'   => [
+                    'class'     => 'Form\\Library\\Filter',
+                    'action'    => 'string'
+                ]
+            ],
+            'number' => [
+                'options'   => [],
+                'handler'   => [
+                    'class'     => 'Form\\Library\\Filter',
+                    'action'    => 'number'
+                ]
             ]
         ],
         
-        'url' => [
-            'message' => 'Field :field is not valid URL',
-            'options' => [],
-            'handler' => [
-                'class' => 'Form\\Library\\Validator',
-                'action'=> 'url'
+        'validator' => [
+            'alnumdash' => [
+                'message' => 'Field :field is accept only alphanumeric and dash character',
+                'options' => [],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'alnumdash'
+                ]
+            ],
+            
+            'callback' => [
+                'message' => 'Field :field is not acceptable',
+                'options' => [],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'callback'
+                ]
+            ],
+            
+            'date' => [
+                'message' => 'Field :field is not valid date',
+                'options' => [],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'date'
+                ]
+            ],
+            
+            'email' => [
+                'message' => 'Field :field is not valid email address',
+                'options' => [],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'email'
+                ]
+            ],
+            
+            'length' => [
+                'message' => 'Field :field length should be in acceptable range',
+                'options' => [
+                    'min'   => '~',
+                    'max'   => '~'
+                ],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'length'
+                ]
+            ],
+            
+            'numeric' => [
+                'message' => 'Field :field must be numeric ( in acceptable range )',
+                'options' => [],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'numeric'
+                ]
+            ],
+            
+            'regex' => [
+                'message' => 'Field :field is not match pattern',
+                'options' => [],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'regex'
+                ]
+            ],
+            
+            'required' => [
+                'message' => 'Field :field is required',
+                'options' => [],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'required'
+                ]
+            ],
+            
+            'unique' => [
+                'message' => 'Field :field already used',
+                'options' => [
+                    'model'     => '',
+                    'field'     => ''
+                ],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'unique'
+                ]
+            ],
+            
+            'url' => [
+                'message' => 'Field :field is not valid URL',
+                'options' => [],
+                'handler' => [
+                    'class' => 'Form\\Library\\Validator',
+                    'action'=> 'url'
+                ]
             ]
         ]
     ]
