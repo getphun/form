@@ -149,7 +149,7 @@ class Form {
                     continue;
                 
                 $vld_msg = $vld['message'];
-                $vld_arg = array_merge(['field' => $args['label']], $vld_opts);
+                $vld_arg = array_merge($vld_opts, ['field' => $args['label']]);
                 
                 foreach($vld_arg as $plc => $plk){
                     if(is_string($plk) || is_int($plk))
