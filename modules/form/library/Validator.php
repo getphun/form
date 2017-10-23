@@ -114,11 +114,14 @@ class Validator
             if(!$ondb_uri)
                 return true;
             return $ondb_uri->id === $ondb->id;
+        
+        // self using service
         }elseif(isset($self['service'])){
             $serv = $self['service'];
             $serp = $self['field'];
+            $comp = $self['service'] ?? 'id';
             
-            if(\Phun::$dispatcher->$serv->$serp != $ondb->$serp)
+            if(\Phun::$dispatcher->$serv->$serp != $ondb->$comp)
                 return false;
             return true;
         }else{
