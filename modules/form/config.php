@@ -19,7 +19,8 @@ return [
     ],
     '__dependencies' => [
         'core',
-        'db-mysql'
+        'db-mysql',
+        '/lib-kses'
     ],
     '_services' => [
         'form' => 'Form\\Service\\Form'
@@ -61,6 +62,80 @@ return [
                 'handler'   => [
                     'class'     => 'Form\\Library\\Filter',
                     'action'    => 'number'
+                ]
+            ],
+            'tinymce' => [
+                'options'   => [
+                    'kses' => [
+                        'h1' => [],
+                        'h2' => [],
+                        'h3' => [],
+                        'h4' => [],
+                        'h5' => [],
+                        'h6' => [],
+                        'p'  => [
+                            'style' => 1
+                        ],
+                        'strong' => [],
+                        'em' => [],
+                        'span' => [
+                            'style' => 1
+                        ],
+                        'sup' => [],
+                        'sub' => [],
+                        'code' => [],
+                        'blockquote' => [],
+                        'div' => [
+                            'class' => []
+                        ],
+                        'pre' => [],
+                        'ul' => [],
+                        'ol' => [],
+                        'li' => [],
+                        'table' => [],
+                        'thead' => [],
+                        'tbody' => [],
+                        'th' => [],
+                        'td' => [],
+                        'tr' => [],
+                        'a' => [
+                            'href' => 1,
+                            'title'=> 1,
+                            'target'=> 1,
+                            'rel' => 1
+                        ],
+                        'figure' => [
+                            'class' => 1
+                        ],
+                        'img' => [
+                            'title' => 1,
+                            'src'   => 1,
+                            'alt'   => 1
+                        ],
+                        'figcaption' => [],
+                        'video' => [
+                            'poster' => 1,
+                            'controls' => 1,
+                            'width' => 1,
+                            'height' => 1
+                        ],
+                        'audio' => [],
+                        'source' => [
+                            'src' => 1,
+                            'type' => 1
+                        ],
+                        'iframe' => [
+                            'src' => 1,
+                            'width' => 1,
+                            'height' => 1,
+                            'frameborder' => 1,
+                            'allowfullscreen' => 1
+                        ]
+                    ]
+                ],
+                'handler'   => [
+                    'class'     => 'Form\\Library\\Filter',
+                    'action'    => 'tinymce'
                 ]
             ]
         ],
