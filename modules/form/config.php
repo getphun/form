@@ -130,7 +130,8 @@ return [
                             'height' => 1,
                             'frameborder' => 1,
                             'allowfullscreen' => 1
-                        ]
+                        ],
+                        'br' => []
                     ]
                 ],
                 'handler'   => [
