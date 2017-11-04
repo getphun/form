@@ -67,63 +67,30 @@ return [
             'tinymce' => [
                 'options'   => [
                     'kses' => [
-                        'h1' => [],
-                        'h2' => [],
-                        'h3' => [],
-                        'h4' => [],
-                        'h5' => [],
-                        'h6' => [],
-                        'p'  => [
-                            'style' => 1
-                        ],
-                        'strong' => [],
-                        'em' => [],
-                        'span' => [
-                            'style' => 1
-                        ],
-                        'sup' => [],
-                        'sub' => [],
-                        'code' => [],
-                        'blockquote' => [],
-                        'div' => [
-                            'class' => []
-                        ],
-                        'pre' => [],
-                        'ul' => [],
-                        'ol' => [],
-                        'li' => [],
-                        'table' => [],
-                        'thead' => [],
-                        'tbody' => [],
-                        'th' => [],
-                        'td' => [],
-                        'tr' => [],
                         'a' => [
                             'href' => 1,
                             'title'=> 1,
                             'target'=> 1,
                             'rel' => 1
                         ],
+                        'audio' => [],
+                        'blockquote' => [],
+                        'br' => [],
+                        'code' => [],
+                        'div' => [
+                            'class' => []
+                        ],
+                        'em' => [],
+                        'figcaption' => [],
                         'figure' => [
                             'class' => 1
                         ],
-                        'img' => [
-                            'title' => 1,
-                            'src'   => 1,
-                            'alt'   => 1
-                        ],
-                        'figcaption' => [],
-                        'video' => [
-                            'poster' => 1,
-                            'controls' => 1,
-                            'width' => 1,
-                            'height' => 1
-                        ],
-                        'audio' => [],
-                        'source' => [
-                            'src' => 1,
-                            'type' => 1
-                        ],
+                        'h1' => [],
+                        'h2' => [],
+                        'h3' => [],
+                        'h4' => [],
+                        'h5' => [],
+                        'h6' => [],
                         'iframe' => [
                             'src' => 1,
                             'width' => 1,
@@ -131,7 +98,43 @@ return [
                             'frameborder' => 1,
                             'allowfullscreen' => 1
                         ],
-                        'br' => []
+                        'img' => [
+                            'title' => 1,
+                            'src'   => 1,
+                            'alt'   => 1
+                        ],
+                        'li' => [],
+                        'ol' => [],
+                        'p'  => [
+                            'style' => 1
+                        ],
+                        'pre' => [
+                            'class' => 1
+                        ],
+                        'span' => [
+                            'style' => 1,
+                            'class' => 1
+                        ],
+                        'source' => [
+                            'src' => 1,
+                            'type' => 1
+                        ],
+                        'strong' => [],
+                        'sub' => [],
+                        'sup' => [],
+                        'table' => [],
+                        'tbody' => [],
+                        'td' => [],
+                        'th' => [],
+                        'thead' => [],
+                        'tr' => [],
+                        'ul' => [],
+                        'video' => [
+                            'poster' => 1,
+                            'controls' => 1,
+                            'width' => 1,
+                            'height' => 1
+                        ]
                     ]
                 ],
                 'handler'   => [
