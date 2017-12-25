@@ -119,7 +119,7 @@ class Validator
         }elseif(isset($self['service'])){
             $serv = $self['service'];
             $serp = $self['field'];
-            $comp = $self['service'] ?? 'id';
+            $comp = $self['comparer'] ?? 'id';
             
             if(\Phun::$dispatcher->$serv->$serp != $ondb->$comp)
                 return false;
